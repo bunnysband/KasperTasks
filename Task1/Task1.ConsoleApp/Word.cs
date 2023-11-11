@@ -1,0 +1,1 @@
+﻿internal record Word(int Count, string Value);
