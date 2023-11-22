@@ -1,11 +1,15 @@
 ﻿using Task1.ConsoleApp;
 using Task1.ConsoleApp.Data;
+using Task1.ConsoleApp.Impl;
 
 var dataProvider = new DataProvider();
-var searcher = new TypedSearcher(dataProvider, 10);
+ITypedSearcher searcher = 
+    //new DictionarySearcher(dataProvider);
+new TreapSearcher(dataProvider);
 
-Parallel.ForEach(dataProvider.UserTypedTextList, searcher.SearchMatchedWords);
-
-//Parallel.ForEach(dataProvider.UserTypedTextList, searcher.SearchWithBinaryMatchedWords);
+foreach (var item in dataProvider.UserTypedTextList)
+{
+    searcher.Search(item);
+}
 
 Console.ReadLine();
