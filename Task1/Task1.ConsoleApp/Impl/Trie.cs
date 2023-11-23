@@ -17,9 +17,9 @@
         public Trie? Search(string text)
         {
             Trie current = this;
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 1; i <= text.Length; i++)
             {
-                var child = current.Children.SingleOrDefault(c => c.Prefix.Equals(text[..(i + 1)]));
+                var child = current.Children.SingleOrDefault(c => c.Prefix.Equals(text[..i]));
                 if (child == null) 
                     return null;
                 current = child;
@@ -34,12 +34,12 @@
             {
                 string value = word.Value;
                 Trie current = root;
-                for (int i = 0; i < value.Length; i++)
+                for (int i = 1; i <= value.Length; i++)
                 {
-                    var child = current.Children.SingleOrDefault(c => c.Prefix.Equals(value[..(i + 1)]));
+                    var child = current.Children.SingleOrDefault(c => c.Prefix.Equals(value[..i]));
                     if (child == null)
                     {
-                        child = new Trie(value[..(i + 1)]);
+                        child = new Trie(value[..i]);
                         current.Children.Add(child);
                     }
 
