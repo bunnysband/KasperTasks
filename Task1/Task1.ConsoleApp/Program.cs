@@ -3,9 +3,9 @@ using Task1.ConsoleApp.Data;
 using Task1.ConsoleApp.Impl;
 
 var dataProvider = new DataProvider();
-ITypedSearcher searcher = 
-    //new DictionarySearcher(dataProvider);
-new TreapSearcher(dataProvider);
+ITypedSearcher searcher =
+//new DictionarySearcher(dataProvider);
+new TrieSearcher(dataProvider);
 
 foreach (var item in dataProvider.UserTypedTextList)
 {
